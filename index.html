@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo 应用</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="Todo 应用">
+      <header class="header">
+        <div>
+          <h1 class="title">Todo</h1>
+          <p class="subtitle">轻量待办清单（本地保存）</p>
+        </div>
+        <div class="stats" aria-live="polite" id="stats"></div>
+      </header>
+
+      <section class="composer" aria-label="创建待办">
+        <form id="todoForm" autocomplete="off">
+          <label class="sr-only" for="todoInput">输入待办内容</label>
+          <input
+            id="todoInput"
+            name="todo"
+            type="text"
+            maxlength="120"
+            placeholder="添加一个待办…（回车创建）"
+            required
+          />
+          <button type="submit" class="btn primary">添加</button>
+        </form>
+      </section>
+
+      <section class="toolbar" aria-label="工具栏">
+        <div class="filters" role="tablist" aria-label="筛选">
+          <button class="chip" type="button" data-filter="all" aria-selected="true">全部</button>
+          <button class="chip" type="button" data-filter="active" aria-selected="false">未完成</button>
+          <button class="chip" type="button" data-filter="done" aria-selected="false">已完成</button>
+        </div>
+        <div class="actions">
+          <button class="btn" type="button" id="clearDone">清除已完成</button>
+          <button class="btn danger" type="button" id="clearAll">清空全部</button>
+        </div>
+      </section>
+
+      <section class="list" aria-label="待办列表">
+        <ul id="todoList" class="todoList" aria-live="polite"></ul>
+        <p id="emptyState" class="emptyState" hidden>还没有待办。现在就添加一个吧。</p>
+      </section>
+
+      <footer class="footer">
+        <span class="hint">快捷键：在输入框里按 <kbd>Enter</kbd> 添加；双击文本可编辑；<kbd>Esc</kbd> 取消编辑。</span>
+      </footer>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

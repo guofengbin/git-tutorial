@@ -1,0 +1,259 @@
+:root{
+  --bg:#0b0f17;
+  --panel:#0f172a;
+  --panel2:#0b1224;
+  --text:#e5e7eb;
+  --muted:#a1a1aa;
+  --line:rgba(148,163,184,.18);
+  --accent:#22c55e;
+  --accent2:#60a5fa;
+  --danger:#fb7185;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "PingFang SC","Microsoft YaHei", sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 15% 10%, rgba(96,165,250,.18), transparent 60%),
+    radial-gradient(900px 600px at 80% 20%, rgba(34,197,94,.14), transparent 60%),
+    radial-gradient(900px 600px at 70% 90%, rgba(251,113,133,.10), transparent 55%),
+    linear-gradient(180deg, #070a12 0%, #0b1020 40%, #070a12 100%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.app{
+  width:min(860px, 100%);
+  background: linear-gradient(180deg, rgba(15,23,42,.92), rgba(11,18,36,.92));
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  backdrop-filter: blur(10px);
+}
+
+.header{
+  padding:22px 22px 16px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:1px solid var(--line);
+  background: linear-gradient(90deg, rgba(96,165,250,.10), transparent 45%, rgba(34,197,94,.08));
+}
+
+.title{
+  margin:0;
+  font-size:26px;
+  letter-spacing:.4px;
+}
+.subtitle{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.stats{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+  text-align:right;
+  min-width:140px;
+}
+
+.composer{
+  padding:16px 22px 10px;
+}
+
+form{
+  display:flex;
+  gap:10px;
+}
+
+input[type="text"]{
+  flex:1;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background: rgba(2,6,23,.35);
+  color:var(--text);
+  outline:none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input[type="text"]::placeholder{color:rgba(161,161,170,.8)}
+input[type="text"]:focus{
+  border-color: rgba(96,165,250,.55);
+  box-shadow: 0 0 0 4px rgba(96,165,250,.14);
+}
+
+.toolbar{
+  padding:10px 22px 14px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+
+.filters{display:flex; gap:8px; flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);
+  background: rgba(2,6,23,.22);
+  color:var(--text);
+  padding:7px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:12px;
+  transition: transform .08s ease, border-color .12s ease, background .12s ease;
+}
+.chip:hover{transform: translateY(-1px)}
+.chip[aria-selected="true"]{
+  border-color: rgba(34,197,94,.55);
+  background: rgba(34,197,94,.12);
+}
+
+.actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+.btn{
+  border:1px solid var(--line);
+  background: rgba(2,6,23,.20);
+  color:var(--text);
+  padding:9px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:12px;
+  transition: transform .08s ease, border-color .12s ease, background .12s ease;
+}
+.btn:hover{transform: translateY(-1px)}
+.btn:active{transform: translateY(0)}
+.btn.primary{
+  border-color: rgba(96,165,250,.55);
+  background: rgba(96,165,250,.12);
+}
+.btn.danger{
+  border-color: rgba(251,113,133,.55);
+  background: rgba(251,113,133,.10);
+}
+
+.list{padding:14px 22px 18px}
+.todoList{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.todo{
+  border:1px solid var(--line);
+  background: rgba(2,6,23,.22);
+  border-radius:14px;
+  padding:10px 10px;
+  display:grid;
+  grid-template-columns: 26px 1fr auto;
+  gap:10px;
+  align-items:center;
+}
+
+.check{
+  width:18px; height:18px;
+  border-radius:6px;
+  border:1px solid rgba(148,163,184,.35);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  background: rgba(2,6,23,.20);
+}
+.todo.done .check{
+  border-color: rgba(34,197,94,.65);
+  background: rgba(34,197,94,.12);
+}
+.check svg{opacity:0; transform: scale(.8); transition: opacity .12s ease, transform .12s ease}
+.todo.done .check svg{opacity:1; transform: scale(1)}
+
+.content{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+.text{
+  font-size:14px;
+  line-height:1.35;
+  word-break:break-word;
+}
+.todo.done .text{color: rgba(229,231,235,.65); text-decoration: line-through}
+.meta{
+  font-size:11px;
+  color:var(--muted);
+}
+
+.rowActions{display:flex; gap:8px; align-items:center}
+.iconBtn{
+  border:1px solid var(--line);
+  background: rgba(2,6,23,.16);
+  color:var(--text);
+  border-radius:10px;
+  padding:8px 10px;
+  cursor:pointer;
+  font-size:12px;
+}
+.iconBtn:hover{border-color: rgba(148,163,184,.35)}
+.iconBtn.danger:hover{border-color: rgba(251,113,133,.55)}
+
+.editInput{
+  width:100%;
+  padding:10px 10px;
+  border-radius:12px;
+  border:1px solid rgba(96,165,250,.45);
+  background: rgba(2,6,23,.35);
+  color:var(--text);
+  outline:none;
+  box-shadow: 0 0 0 4px rgba(96,165,250,.12);
+}
+
+.emptyState{
+  margin:12px 0 0;
+  padding:16px;
+  border:1px dashed rgba(148,163,184,.25);
+  border-radius:14px;
+  color:var(--muted);
+  background: rgba(2,6,23,.14);
+}
+
+.footer{
+  border-top:1px solid var(--line);
+  padding:14px 22px 18px;
+  color:var(--muted);
+  font-size:12px;
+  background: rgba(2,6,23,.10);
+}
+kbd{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: rgba(148,163,184,.14);
+  border:1px solid rgba(148,163,184,.20);
+  padding:2px 6px;
+  border-radius:7px;
+  color: var(--text);
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
+
+@media (max-width: 560px){
+  .toolbar{flex-direction:column; align-items:stretch}
+  .actions{justify-content:flex-start}
+  form{flex-direction:column}
+  .btn.primary{width:100%}
+  .stats{text-align:left; min-width:0}
+}
